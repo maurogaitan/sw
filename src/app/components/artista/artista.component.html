@@ -1,0 +1,34 @@
+<app-loading *ngIf="loadingArtista"></app-loading>
+
+<div class="row d-flex justify-content-end align-items-center" *ngIf="!loadingArtista">
+    <div class="col-2">
+        <img *ngIf="imgUrl" [src]="imgUrl" class="img-thumbnail img-circle">
+    </div>
+    <div class="col-8">
+        <h3>{{artista.name}}</h3>
+        <span *ngFor="let genero of artista.genres">{{genero}}</span>
+    </div>
+    <div class="col-2">
+        <button class="btn btn-outline-danger">Regresar</button>
+    </div>
+    <div class="col-12 mt-5">
+        <table class="table  table-responsive " style="color:#efefef!important">
+            <thead>
+                <tr>
+                    <th>Foto</th>
+                    <th>Album</th>
+                    <th>Canción</th>
+                    <th>Vista Previa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let tt of topTracks">
+                    <td><img [src]="tt.album.images[2].url" class="img-thumb"></td>
+                    <td>{{tt.album.name}}</td>
+                    <td>{{tt.name}}</td>
+                    <td><audio [src]="tt.preview_url" controls></audio></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
